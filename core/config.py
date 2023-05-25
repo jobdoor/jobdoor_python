@@ -3,26 +3,24 @@ from typing import Any, Dict, List, Optional, Union
 import os
 from dotenv import load_dotenv,find_dotenv
 from pydantic import AnyHttpUrl,  HttpUrl
+from abc import ABC, abstractproperty
 
 load_dotenv(find_dotenv())
 
-print()
-#os.getenv('REPORT_CONN_DRIVER','')
-class Settings():
-    API_V1_STR: str = "/api/v1"
-    ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 8
-    SERVER_NAME: str
-    SERVER_HOST: AnyHttpUrl
+class Settings(ABC):
     BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = []
-
     PROJECT_NAME: str ='jobdoors backend'
-
-    POSTGRES_USER: str
-    POSTGRES_PASSWORD: str
-    POSTGRES_DB: str
+    SQLALCHEMY_DATABASE_URI: str
+    
+class LocalSettings(Settings):
+    SQLALCHEMY_DATABASE_URI: str= os.getenv('DATABASE_URI_LOC','')
+    
+class ProductionSettings(Settings):
     SQLALCHEMY_DATABASE_URI: str= os.getenv('DATABASE_URI_PROD','')
 
+if(os.getenv('ENVIROMENT','')=='PRODUCTION'):
+    settings = ProductionSettings()
+else:
+    settings = LocalSettings()
 
 
-
-settings = Settings()
