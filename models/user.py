@@ -1,7 +1,4 @@
-from sqlalchemy import Boolean
-from typing import Optional
-
-from sqlalchemy import Boolean, Column, Integer, String
+from sqlalchemy import Column, Integer, String
 from db.base_class import Base
 
 class User(Base):
