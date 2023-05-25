@@ -21,7 +21,7 @@ class Settings():
     POSTGRES_USER: str
     POSTGRES_PASSWORD: str
     POSTGRES_DB: str
-    SQLALCHEMY_DATABASE_URI: str= 'postgresql://postgres:password@localhost'
+    SQLALCHEMY_DATABASE_URI: str= 'postgresql://postgres:admin@localhost/jobdoor'
 
 
 

@@ -1,11 +1,10 @@
 from sqlalchemy import Boolean
 from typing import Optional
 
-from sqlmodel import Field, SQLModel
-from db.base import Base
-
+from sqlalchemy import Boolean, Column, Integer, String
+from db.base_class import Base
 
 class User(Base):
-    id: Optional[int] = Field(default=None, primary_key=True)
-    name: str
-    age: Optional[int] = None
+    id=Column(Integer, primary_key=True, index=True)
+    name=Column(String)
+    age= Column(Integer)

@@ -9,6 +9,7 @@ uvicorn = {extras = ["all"], version = "*"}
 sqlalchemy = "*"
 sqlmodel = "*"
 pydantic = "*"
+psycopg2 = "*"
 
 [dev-packages]
 
